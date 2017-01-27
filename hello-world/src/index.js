@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router from 'react-routing/lib/Router';
-import NotFoundPage from './components/NotFoundPage';
-import ErrorPage from './components/ErrorPage';
-import { Router, Route, ReacRou } from 'react-router';
+import { IndexRoute, Route } from 'react-router';
+import App from 'components/App';
+import Home from 'components/Home';
+import Stuff from 'components/Stuff';
+import Contact from 'components/Contact';
+import FourOhFour from 'components/FourOhFour';
 import './index.css';
 
 var destination = document.querySelector("#root");
@@ -99,14 +101,11 @@ var destination = document.querySelector("#root");
       }
     });
 
-    ReactDOM.render((
-      <router history={hashHistory}>
-        <Route path="/" component={App}>
+    export default (
+        <Route component={App} path='/'>
           <IndexRoute component={Home} />
-          <Route path="stuff" component={Stuff} />
-          <Route path="contact" component={Contact} />
-          <Route path='*' component={FourOhFour} />
+          <Route component={Stuff} path='stuff' />
+          <Route component={Contact} path='contact' />
+          <Route component={FourOhFour} path='*' />
         </Route>
-
-      </router>
-    ), destination);
+    );
